@@ -22,7 +22,7 @@ var pageGenerator = {
 	
       document.write("Sending request...");
       var req = new XMLHttpRequest();
-      req.open("GET", "http://www.ly.com/scenery/scenerysearchlist_0_0__6_0_0_0.html", true);
+      req.open("GET", "http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1188&ID=33037&star=5&page=1", true);
       
 	  req.onreadystatechange = function() {
             if (req.readyState == 4) {
@@ -32,8 +32,10 @@ var pageGenerator = {
 				t = $(req.responseText);
 				
 				//loop over 'bar' nodes
-				t.find('div.scenery_main').each(function () {
-				  document.write( $(this).html());
+				t.find('div.postuserinfo').each(function () {
+				  //document.write( $(this).html());
+				  document.write($(this).find('div').first().html());
+				  document.write($(this).siblings(".post").html());
 				});
 				
               }

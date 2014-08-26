@@ -6,7 +6,7 @@
   "version": "1.0",
 
   "permissions": [
-    "http://www.ly.com/"
+    "http://www.ly.com/","http://inbbs.17u.com/"
   ],
   "browser_action": {
     "default_icon": "cat.png",
