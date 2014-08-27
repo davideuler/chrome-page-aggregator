@@ -32,11 +32,17 @@ var pageGenerator = {
 				t = $(req.responseText);
 				
 				//loop over 'bar' nodes
-				t.find('div.postuserinfo').each(function () {
-				  //document.write( $(this).html());
-				  document.write($(this).find('div').first().html());
-				  document.write($(this).siblings(".post").html());
-				});
+			  posts = t.find('div.postuserinfo');
+			  len = posts.length;
+			  alert(posts.length);
+			  document.write(posts.first().html());
+			  document.write(posts.first().siblings(".post").html());
+			  
+				 // t.find('div.postuserinfo').each(function () {
+// 				//   //document.write( $(this).html());
+// 				   document.write($(this).find('div').first().html());
+// 				   document.write($(this).siblings(".post").html());
+//});
 				
               }
             }
