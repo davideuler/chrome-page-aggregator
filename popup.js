@@ -20,29 +20,30 @@ var pageGenerator = {
   
   requestPages: function() {
 	
-      document.write("Sending request...");
+      console.log("Sending request...");
       var req = new XMLHttpRequest();
       req.open("GET", "http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1188&ID=33037&star=5&page=1", true);
       
 	  req.onreadystatechange = function() {
             if (req.readyState == 4) {
               if (req.status == 200) {
-				document.write("hello world <br>");
+				console.log("hello world <br>");
                 
 				t = $(req.responseText);
 				
 				//loop over 'bar' nodes
-			  posts = t.find('div.postuserinfo');
-			  len = posts.length;
-			  alert(posts.length);
-			  document.write(posts.first().html());
-			  document.write(posts.first().siblings(".post").html());
+			  user = t.find('div.th');
+			  posts = t.find('div.post');
+
+			  document.write(user.html());
+			  document.write(posts.eq(posts.length-2).children('div').eq(2).html());
+  			  document.write(posts.eq(posts.length-1).children('div').eq(2).html());
 			  
-				 // t.find('div.postuserinfo').each(function () {
-// 				//   //document.write( $(this).html());
-// 				   document.write($(this).find('div').first().html());
-// 				   document.write($(this).siblings(".post").html());
-//});
+				  // t.find('div.postuserinfo').each(function () {
+ // 				  // document.write( $(this).html());
+ // 				   document.write('aa' + $(this).find('div').first().html());
+ // 				   document.write('bb' + $(this).siblings(".post").first().html());
+ // 			   	});
 				
               }
             }
