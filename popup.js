@@ -18,33 +18,28 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 
 var pageGenerator = {
   
-  requestPages: function() {
+  requestPages: function(url) {
 	
       console.log("Sending request...");
       var req = new XMLHttpRequest();
-      req.open("GET", "http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1188&ID=33037&star=5&page=1", true);
+      req.open("GET", url, true);
       
 	  req.onreadystatechange = function() {
             if (req.readyState == 4) {
               if (req.status == 200) {
-				console.log("hello world <br>");
-                
 				t = $(req.responseText);
-				
-				//loop over 'bar' nodes
-			  user = t.find('div.th');
+			  //user = t.find('div.th');
+			  //document.write(user.html());
+						  
 			  posts = t.find('div.post');
 
-			  document.write(user.html());
+ 			  document.write(posts.eq(posts.length-2).prev().children().eq(0).children().eq(0).html());
+  			  document.write('<br>');
 			  document.write(posts.eq(posts.length-2).children('div').eq(2).html());
+
+   			  document.write(posts.eq(posts.length-1).prev().children().eq(0).children().eq(0).html());
+  			  document.write('<br>');
   			  document.write(posts.eq(posts.length-1).children('div').eq(2).html());
-			  
-				  // t.find('div.postuserinfo').each(function () {
- // 				  // document.write( $(this).html());
- // 				   document.write('aa' + $(this).find('div').first().html());
- // 				   document.write('bb' + $(this).siblings(".post").first().html());
- // 			   	});
-				
               }
             }
       };
@@ -58,5 +53,14 @@ var pageGenerator = {
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  pageGenerator.requestPages();
+var urls = ["http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1188&ID=33037&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1179&ID=32320&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1137&ID=31356&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1178&ID=38449&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1116&ID=37458&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1116&ID=31993&star=15&page=1",
+"http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=1116&ID=33229&star=15&page=1",];
+  
+  for (var i=0;i<urls.length;i++)
+  pageGenerator.requestPages(urls[i]);
 });
