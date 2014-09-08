@@ -9,4 +9,5 @@ http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=841&ID=41042&page=1,
 http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=841&ID=33679&page=1,
 http://inbbs.17u.com:8080/inbbs/dispbbs.asp?boardID=841&ID=41597&page=1
 
+注意URL中要加上star=15，这样会找到帖子中最后一页的内容（因为15页比我们用到的页数都要长）:
 每个URL中的最后两条回复会被抽取出来，在插件中显示内容。
